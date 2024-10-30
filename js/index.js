@@ -1,81 +1,116 @@
+// Function to fetch pet data from the server
+async function fetchPets() {
+    try {
+		let pets = {
+    		data: []
+		};
 
- 
- //Display pets
-for(let i of pets.data){
-	//create card
-	let card = document.createElement("div");
-	//card should have category and stay hidden initially
-	card.classList.add("card", i.category, "hide");
+        const response = await fetch('fetch_pets.php');
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const petData = await response.json();
+        // Map the fetched data to the desired structure
+        pets.data = petData.map(pet => ({
+            petName: pet.pet_name,
+            image: pet.image,
+            description: pet.description,
+            age: pet.age,
+            breed: pet.breed,
+            size: pet.size,
+            gender: pet.gender,
+            shelter: {
+                name: pet.shelter_name,
+                place: pet.shelter_place,
+                phone: pet.shelter_phone,
+            },
+            volunteer: {
+                id: pet.volunteer_id,
+                name: pet.volunteer_name,
+            },
+            category: pet.category || 'Dog' // Default category
+        }));
+		for(let i of pets.data){
+			//create card
+			let card = document.createElement("div");
+			//card should have category and stay hidden initially
+			card.classList.add("card", i.category, "hide");
+		
+			//image div
+			let imgContainer = document.createElement("div");
+			imgContainer.classList.add("image-container");
+		 
+			//image tag
+			let image = document.createElement("img");
+			image.setAttribute("src", i.image);
+			imgContainer.appendChild(image);
+			card.appendChild(imgContainer);
+		
+			//container
+			let container = document.createElement("div");
+			container.classList.add("container");
+		
+			// pet name
+			let name = document.createElement("h4");
+			name.classList.add("pet-name");
+			name.innerText = i.petName;
+			container.appendChild(name);
+			
+			// gender
+			let gender = document.createElement("h9");
+			gender.innerText = `Gender: ${i.gender}`; // Add label
+			container.appendChild(gender);
+			
+			// age
+			let age = document.createElement("h9");
+			age.innerText = `Age: ${i.age}`; // Add age
+			container.appendChild(age);
+			
+			// breed
+			let breed = document.createElement("h9");
+			breed.innerText = `Breed: ${i.breed}`; // Add breed
+			container.appendChild(breed);
+			
+			// size
+			let size = document.createElement("h9");
+			size.innerText = `Size: ${i.size}`; // Add size
+			container.appendChild(size);
+			
+			// shelter details
+			let shelterDetails = document.createElement("h9");
+			shelterDetails.innerText = `Shelter: ${i.shelter.name}, ${i.shelter.place}, Phone: ${i.shelter.phone}`; // Add shelter details
+			container.appendChild(shelterDetails);
+			
+			// volunteer details
+			let volunteerDetails = document.createElement("h9");
+			volunteerDetails.innerText = `Volunteer: ${i.volunteer.name}, ID: ${i.volunteer.id}`; // Add volunteer details
+			container.appendChild(volunteerDetails);
+			
+			// description
+			let description = document.createElement("h9");
+			description.innerText = i.description; // Fix: Use 'description' instead of 'gender'
+			container.appendChild(description);
 
-	//image div
-	let imgContainer = document.createElement("div");
-	imgContainer.classList.add("image-container");
- 
-	//image tag
-	let image = document.createElement("img");
-	image.setAttribute("src", i.image);
-	imgContainer.appendChild(image);
-	card.appendChild(imgContainer);
-
-	//container
-	let container = document.createElement("div");
-	container.classList.add("container");
-
- // pet name
- let name = document.createElement("h4");
- name.classList.add("pet-name");
- name.innerText = i.petName;
- container.appendChild(name);
-
- // gender
- let gender = document.createElement("h9");
- gender.innerText = `Gender: ${i.gender}`; // Add label
- container.appendChild(gender);
-
- // age
- let age = document.createElement("h9");
- age.innerText = `Age: ${i.age}`; // Add age
- container.appendChild(age);
-
- // breed
- let breed = document.createElement("h9");
- breed.innerText = `Breed: ${i.breed}`; // Add breed
- container.appendChild(breed);
-
- // size
- let size = document.createElement("h9");
- size.innerText = `Size: ${i.size}`; // Add size
- container.appendChild(size);
-
- // shelter details
- let shelterDetails = document.createElement("h9");
- shelterDetails.innerText = `Shelter: ${i.shelter.name}, ${i.shelter.place}, Phone: ${i.shelter.phone}`; // Add shelter details
- container.appendChild(shelterDetails);
-
- // volunteer details
- let volunteerDetails = document.createElement("h9");
- volunteerDetails.innerText = `Volunteer: ${i.volunteer.name}, ID: ${i.volunteer.id}`; // Add volunteer details
- container.appendChild(volunteerDetails);
-
- // description
- let description = document.createElement("h9");
- description.innerText = i.description; // Fix: Use 'description' instead of 'gender'
- container.appendChild(description);
-	//adopt button
-	let adoptButton = document.createElement("button6");
-    adoptButton.classList.add("adopt-button");
-    adoptButton.innerText = "Adopt";
-    container.appendChild(adoptButton);
-
-	adoptButton.addEventListener("click", () => {
-        alert(`${i.petName} adopted successfully!`); // Display success message
-        card.classList.add("hide"); // Optionally hide the card after adoption
-    });
-
-	card.appendChild(container);
-	document.getElementById("pets").appendChild(card);
+			//adopt button
+			let adoptButton = document.createElement("button6");
+			adoptButton.classList.add("adopt-button");
+			adoptButton.innerText = "Adopt";
+			container.appendChild(adoptButton);
+		
+			adoptButton.addEventListener("click", () => {
+				alert(`${i.petName} adopted successfully!`); // Display success message
+				card.classList.add("hide"); // Optionally hide the card after adoption
+			});
+		
+			card.appendChild(container);
+			console.log(card.innerHTML);
+			document.getElementById("pets").appendChild(card);
+		}		
+        console.log(pets.data); // Output the pets object to the console for verification
+    } catch (error) {
+        console.error('Error fetching pet data:', error);
+    }
 }
-
 
 //parameter passed from button 
 
@@ -114,7 +149,7 @@ function filterProduct(value){
 }
 //search button click
 //will implement this later
-document.getElementById("search").addEventListener("click", () =>{
+/*document.getElementById("search").addEventListener("click", () =>{
     //initializations
     let searchInput = document.getElementById("search-input").value;
     let elements = document.querySelectorAll(".pet-name");
@@ -134,20 +169,21 @@ document.getElementById("search").addEventListener("click", () =>{
         }
     }) 
 });
-
+*/
 
 //initially display all products
 window.onload =() => {
-    filterProduct("all")
+	fetchPets();
+    filterProduct("all");
 };
 
 
 
 //  slider part
-$(".custom-carousel").owlCarousel({
+/*$(".custom-carousel").owlCarousel({
 	autoWidth: true,
 	loop: true
-  });
+  });*/
   $(document).ready(function () {
 	$(".custom-carousel .item").click(function () {
 	  $(".custom-carousel .item").not($(this)).removeClass("active");
@@ -307,9 +343,9 @@ $(".custom-carousel").owlCarousel({
 	content: myContent
   });
   
-  var bookButton = document.getElementById('trigger');
+  /*var bookButton = document.getElementById('trigger');
   
   bookButton.addEventListener('click', function() {
 	myModal.open();
-  });
+  });*/
 
