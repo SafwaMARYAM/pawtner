@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/main.css">
+    <!--scripts-->
+    <script type="text/db.json" src="pets.json"></script>
+    <script type="text/javascript" src="js/index.js" defer></script>
+    <!--unicons-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- Font awesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-DfXd7n+ndnOWmTZHlM9/2Yh6IUmeO62aMvd7tjPzB7UCn5pHXD3IzPkfS47aHDG5" crossorigin="anonymous">
+     -->
+     <!-- <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script> -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Pawtner</title>
+</head>
+<body>
+    <div class="container">
+      
+      <nav>
+        <a href="#section1"></a>
+        <img src="pawtner.png" class="logo">
+          <ul class="navItems">
+            <li><a href="#section1">Home</a></li>
+            <li><a href="#section2">Adopt a Pet</a></li>
+            <li><a href="#section15">About Us</a></li>
+            <!-- <li><a href="#section3">The Team</a></li> -->
+
+          </ul>
+          </nav>
+          <div id="section1">
+                <div class="wrapper">
+                    <div class="cols cols0">
+                        <!--<span class="topline">Hello</span>--> 
+                        <h1>Adopt.</h1>
+                        <h1><span class="multiText">Dont Shop.</span></h1>
+                        <p class="landing-p">It's never too late to fall in love . . .</p>
+                        <div>
+                          <a href="#section2"><button class="find-btn">Find a Pet</button> </a>
+                          
+                        </div>
+                    </div>
+                    <div class="cols cols1">
+                        <div class="imgbox">
+                        <img src="src/ldog.jpg" class="landing-pic" >
+
+                        <!-- <img src="https://tinyurl.com/yzzuremw" > -->
+                        </div>  
+                    </div>
+                </div>  
+          </div>
+          <div id="section2">
+            <h6 class="sctn2-head">OUR PETS</h6>
+            <h4 class="sctn2-head2">Waiting for adoption</h4>
+            <br>
+            <!--Fetch animal images from JSON file-->
+
+            <div class="wrapper2">
+            
+              <div id="buttons">
+
+                <button5 class="button-value" onclick="filterProduct('Dog')">Dogs</button5>
+                
+              </div>
+                <div id="pets"></div>
+            </div>
+          </div> 
+
+          <div id="section15">
+            <!-- <div class="a-card">
+              <img src="src/doggo.png" class="dog"/>
+              </div> -->
+              <h6 class="sctn3-head">ABOUT US</h6>
+              <h3>Why Pawtner?</h3>
+              
+            </br>
+              <p2>Your heart is in the right place and we couldnt be happier!<br>
+                Pawtner helps you find your forever bestfriend. </p2>
+              <article>
+                <section class="about-card">
+                  <div class="text-content">
+                    <h3 class="ab-h3">Connecting Pets and People</h3>
+                    <p class="ab-p">Find furry friends loving homes with us! We're passionate about adoption and dedicated to making the process easy. Collaborating with shelters nationwide, we connect you with adorable pets waiting for their forever families.</p>  
+                    <a href="#section2"><button class="abt-btn">Find a Pet</button> </a>
+                    
+                  </div>
+                  <div class="visual">
+                    <img src="https://images.pexels.com/photos/7533347/pexels-photo-7533347.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+                  </div>
+                </section> 
+                <section class="about-card">
+                  <div class="text-content">
+                    <h3 class="ab-h3">User-friendly platform for perfect matches</h3>
+                    <p class="ab-p">Search, find, adopt! Our website is a pet-lover's paradise, with intuitive filters that help you discover your ideal furry friend. Get ready to make informed decisions with detailed pet profiles. It's like online shopping, but way more adorable and rewarding!</p>  
+                    <a href="#section2"><button class="abt-btn">Find a Pet</button> </a>
+
+                  </div>
+                  <div class="visual">
+                    <img src="https://images.pexels.com/photos/8498832/pexels-photo-8498832.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+                  </div>
+                </section> 
+                <section class="about-card">
+                  <div class="text-content">
+                    <h3 class="ab-h3">Making a Difference through adoption</h3>
+                    <p class="ab-p">At Pawtner, we're all about making a pawsitive impact! By adopting, you not only save lives but also create space in shelters for more furry friends in need. Join our compassionate community of adopters and experience the joy of giving a forever home.</p>  
+                    <a href="#section2"><button class="abt-btn">Find a Pet</button> </a>
+
+                  </div>
+                  <div class="visual">
+                    <img src="https://images.pexels.com/photos/1364756/pexels-photo-1364756.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+                  </div>
+                </section> 
+              </article>
+            </div>
+           
+          </div>
+         
+
+         
+        <!-- Footer -->
+        <footer class="footer-section">
+          <div class="footer-container">
+              <div class="footer-cta pt-5 pb-5">
+                  <div class="row">
+                      <div class="col-xl-4 col-md-4 mb-30">
+                          <div class="single-cta">
+                              <i class="fas fa-map-marker-alt"></i>
+                              <div class="cta-text">
+                                  <h4>Find us</h4>
+                                  <span>Green Valley Residence, 45 Hill View Lane, Munnar, Idukki, Kerala, 685612.</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-4 col-md-4 mb-30">
+                          <div class="single-cta">
+                              <i class="fas fa-phone"></i>
+                              <div class="cta-text">
+                                  <h4>Call us</h4>
+                                  <span>7736916485</span>
+                              </div>
+                          </div>
+                      </div>
+      
+                      </div>
+                  </div>
+              </div>
+             
+          </div>
+      </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" ></script>
+    </div>
+    <script type="text/javascript" src="pets.js"></script>
+</body>
+</html>
