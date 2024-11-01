@@ -2,7 +2,8 @@
 include 'db_conn.php';
 
 $sql = "
-    SELECT 
+    SELECT
+        pets.pet_id,
         pets.pet_name, 
         pets.image, 
         pets.description, 
@@ -21,6 +22,8 @@ $sql = "
         shelters ON pets.shelter_id = shelters.shelter_id
     JOIN 
         volunteers ON pets.volunteer_id = volunteers.volunteer_id
+    WHERE 
+        pets.adoption_status = 'no';
 ";
 
 $result = $conn->query($sql);
