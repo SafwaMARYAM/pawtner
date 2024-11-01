@@ -84,7 +84,7 @@
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                    if(isWithinWorkingHours($workingHours) || true){
+                    if(isWithinWorkingHours($workingHours)){
                         require 'db_conn.php';
 
                         $name = htmlspecialchars($_POST["name"]); // Sanitize input
